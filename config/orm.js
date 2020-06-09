@@ -15,7 +15,7 @@ function objToSql(obj) {
 
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
-            arr.push(key + '=' = obj[key]);
+            arr.push(key + '=' + obj[key]);
         }
     }
     return arr.toString();
