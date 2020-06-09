@@ -3,10 +3,6 @@ const router = express.Router();
 
 const burger = require('../models/burger');
 
-/* router.get('/', function(req, res) {
-    res.render('index');
-}) */
-
 router.get('/', function(req, res) {
     burger.selectAll(function(burger_data) {
         console.log(burger_data);
@@ -14,14 +10,18 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post("/api/burgers", function(req, res) {
-    burger.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
-        res.json({ id: result.insertId});
-    });
+router.post("/burgers/create", function(req, res) {
+    burger.insertOne(req.body.burger_name, function(result) {
+        res.redirect('/');
+    })
 });
 
-/* router.put("api/burgers/:id", function(req, res) {
-    const condition
-}) */
+router.post("/burgers/update", function(req, res) {
+    burger.updateOne(req.body.burger_id, function(result) {
+        console.log(result);
+        res.redirect('/');
+    })
+}) 
+
 
 module.exports = router;

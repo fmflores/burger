@@ -1,11 +1,12 @@
-const express = require("express")
-const exphbs = require("express-handlebars")
+const express = require("express");
+const exphbs = require("express-handlebars");
+const morgan = require('morgan');
 
-const app = express()
-const PORT = process.env.PORT || 3000
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
-
+app.use(morgan('tiny'));
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
