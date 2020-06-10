@@ -1,26 +1,5 @@
 var connection = require("../config/connection.js")
 
-function printQuestionMarks(num) {
-    var arr = [];
-
-    for (let i = 0; i < num; i++) {
-        arr.push('?');
-    }
-
-    return arr.toString();
-}
-
-function objToSql(obj) {
-    var arr = [];
-
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            arr.push(key + '=' + obj[key]);
-        }
-    }
-    return arr.toString();
-}
-
 const orm = {
     selectAll: function (tableInput, cb) {
         const queryString = 'SELECT * FROM ' + tableInput + ';';
